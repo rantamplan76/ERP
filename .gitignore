@@ -1,0 +1,31 @@
+# Ignore all system-generated files
+Thumbs.db   # Thumbnail cache file
+
+# Ignore temporary files
+*.log     # Log files
+*.tmp     # Temporary files
+*.swp     # Swap files (from editors like Vim)
+*~        # Backup files (from editors like Emacs)
+
+# Ignore Python-generated files
+__pycache__/  # Python bytecode directories
+**/__pycache__/  # Recursively ignore all __pycache__ directories
+*.pyc
+
+*.pyo       # Optimized Python bytecode files
+*.pyd       # Compiled Python modules
+
+# Ignore the virtual environment
+.venv/
+venv/       # Virtual environment directory
+.env        # Environment variables file (if you use .env for configuration)
+
+# Ignore global dependencies installed with pip
+requirements.txt  # File listing project dependencies
+
+# Ignore browser-specific temporary files
+*.crdownload  # Chrome's partial download file
+*.part        # Firefox's temporary download file
+
+# Ignore local configuration files
+config_local.py  # Local configuration file that should not be shared
