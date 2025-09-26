@@ -1,31 +1,75 @@
-# Ignore all system-generated files
-Thumbs.db   # Thumbnail cache file
+# ===== ARCHIVOS DE ENTORNO =====
+.env
+.env.local
+.env.*.local
 
-# Ignore temporary files
-*.log     # Log files
-*.tmp     # Temporary files
-*.swp     # Swap files (from editors like Vim)
-*~        # Backup files (from editors like Emacs)
+# ===== PYTHON =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# Ignore Python-generated files
-__pycache__/  # Python bytecode directories
-**/__pycache__/  # Recursively ignore all __pycache__ directories
-*.pyc
-
-*.pyo       # Optimized Python bytecode files
-*.pyd       # Compiled Python modules
-
-# Ignore the virtual environment
+# ===== ENTORNOS VIRTUALES =====
+venv/
 .venv/
-venv/       # Virtual environment directory
-.env        # Environment variables file (if you use .env for configuration)
+env/
+.env/
+ENV/
+env.bak/
+venv.bak/
 
-# Ignore global dependencies installed with pip
-requirements.txt  # File listing project dependencies
+# ===== BASE DE DATOS =====
+*.db
+*.sqlite
+*.sqlite3
+erp.db
 
-# Ignore browser-specific temporary files
-*.crdownload  # Chrome's partial download file
-*.part        # Firefox's temporary download file
+# ===== IDEs =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 
-# Ignore local configuration files
-config_local.py  # Local configuration file that should not be shared
+# ===== LOGS =====
+logs/
+*.log
+
+# ===== TESTING =====
+.coverage
+.pytest_cache/
+.tox/
+htmlcov/
+
+# ===== SISTEMA OPERATIVO =====
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ===== TEMPORALES =====
+*.tmp
+*.temp
+.cache/
+
+# ===== DOCUMENTACIÓN BUILD =====
+docs/_build/

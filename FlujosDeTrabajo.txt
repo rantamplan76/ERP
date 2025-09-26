@@ -1,0 +1,57 @@
+Flujo para actualizaciones de paquetes.
+
+# Ver qué está desactualizado
+pip list --outdated
+
+# Actualizar un paquete específico
+pip install --upgrade fastapi
+
+# Verificar que funciona
+fastapi dev main.py
+
+# Si todo OK, generar requirements fijo para producción
+pip freeze > requirements-lock.txt
+
+*********************************************************
+
+Problemas con .gitignore
+
+# Verificar si .env está siendo tracked
+git ls-files | grep .env
+
+# Si aparece, significa que ya está en el repositorio
+# Verificar estructura
+ls -la | grep gitignore  # Debe estar en ERP/.gitignore
+
+# Verificar contenido
+cat .gitignore | grep -v "^#" | grep -v "^$"
+# Verificar nombre exacto
+ls -la | grep env
+# OPCIÓN 1: Eliminar del tracking (mantener archivo)
+git rm --cached .env
+git commit -m "Remove .env from tracking"
+
+# OPCIÓN 2: Eliminar completamente y recrear
+git rm .env
+git commit -m "Remove .env file"
+cp .env.sample .env
+# Editar .env con tus valores
+# Mover a la raíz del proyecto
+mv api/.gitignore .gitignore  # Si estaba en api/
+# O crear nuevo en la raíz
+# Después de arreglar:
+git status  # .env NO debe aparecer
+echo "test" >> .env
+git status  # Sigue sin aparecer
+# Ejecuta esto y comparte el resultado:
+echo "=== ESTRUCTURA ==="
+ls -la | grep -E "\.(env|gitignore)"
+
+echo "=== GIT STATUS ==="
+git status --porcelain | grep env
+
+echo "=== GITIGNORE CONTENT ==="
+cat .gitignore | grep env
+
+echo "=== GIT LS-FILES ==="
+git ls-files | grep env
