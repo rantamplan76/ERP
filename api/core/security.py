@@ -1,10 +1,13 @@
 from passlib.context import CryptContext
 import jwt
+import logging
 from datetime import datetime, timedelta
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBearer
 from typing import Optional
 from .config import settings
+
+logger = logging.getLogger(__name__)
 
 # Configuración de hashing
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -45,20 +48,28 @@ def decode_access_token(token: str) -> Optional[dict]:
         )
         # ✅ Validar que es un dict
         if not isinstance(payload, dict):
+            logger.warning("decode_access_token: payload no es dict, tipo=%s", type(payload))
             return None
         
         # ✅ Validar que tiene los campos mínimos esperados
         if "sub" not in payload:
+            logger.warning("decode_access_token: falta campo 'sub', keys=%s", list(payload.keys()))
             return None
             
         # ✅ Validar que 'sub' no está vacío
         if not payload["sub"]:
+            logger.warning("decode_access_token: campo 'sub' vacío, keys=%s", list(payload.keys()))
             return None
-            
+        logger.info("Token validado correctamente para user_id=%s", payload["sub"])            
         return payload
-    except jwt.InvalidTokenError:
+    except jwt.ExpiredSignatureError:
+        logger.warning("Token expirado: %s", token)
         return None
-    except Exception:  # Cualquier otro error inesperado
+    except jwt.InvalidTokenError:
+        logger.warning("Token inválido: %s", token)
+        return None
+    except Exception as e:  # Cualquier otro error inesperado
+        logger.error("Error inesperado en decode_access_token: %s", e)
         return None
 
 

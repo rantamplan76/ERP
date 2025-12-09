@@ -1,0 +1,25 @@
+¡Perfecto! 📋 **Tarea para mañana anotada:**
+
+## **🔄 Plan para mañana:**
+
+### **1. Añadir logging básico a security.py**
+- Importar `logging`
+- Configurar logger básico en main.py
+- Añadir logs específicos en `decode_access_token()`
+
+### **2. Continuar con módulo users**
+- Crear estructura correcta (ID numérico + username)
+- Models, schemas, service y router
+- Integrar con SQLAlchemy
+
+## **✅ Lo que tienes listo hoy:**
+- 🎯 **Core authentication** funcionando
+- 🎯 **Config y security** completados
+- 🎯 **Arquitectura clara** definida
+- 🎯 **Base sólida** para continuar
+
+**¡Buen trabajo hoy!** 🚀 La base de autenticación está muy bien estructurada y lista para construir encima.
+
+Mañana será pan comido implementar el logging y seguir con users. 
+
+¡Hasta mañana! 👋
